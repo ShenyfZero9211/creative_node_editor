@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creative Node Editor — 可视化创意编程工具</title>
+  <meta name="description" content="可视化节点式创意编程工具，支持图形、图片、文本的节点化组合与实时渲染" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/styles/index.css" />
+  <link rel="stylesheet" href="/src/styles/nodes.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Menu Bar (File | Edit | View | Help) -->
+    <div id="menu-bar"></div>
+
+    <!-- Quick Toolbar -->
+    <header id="toolbar"></header>
+
+    <!-- Main Content Area -->
+    <main id="main-content">
+      <!-- Node Canvas -->
+      <div id="canvas-container">
+        <canvas id="node-canvas"></canvas>
+        <div id="minimap"><canvas id="minimap-canvas"></canvas></div>
+        <div id="canvas-info"><span id="zoom-level">100%</span></div>
+      </div>
+
+      <!-- Right Parameter Panel -->
+      <aside id="param-panel">
+        <div id="param-panel-header"><h2>属性</h2></div>
+        <div id="param-panel-content">
+          <p class="empty-hint">选择一个节点查看属性</p>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Context Menu -->
+    <div id="context-menu" class="hidden"></div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
