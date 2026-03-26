@@ -1,145 +1,100 @@
 # Creative Node Editor (CNE)
 
+[English](#english) | [中文](#中文)
+
+---
+
+<a name="english"></a>
+
+## 🌟 English Version
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Status: Active](https://img.shields.io/badge/Status-Active-brightgreen.svg)]()
 [![Build Framework: Vanilla JS](https://img.shields.io/badge/Build%20Framework-Vanilla%20JS-blue.svg)]()
 
 > A high-performance, modular, and visually stunning node-based creative environment for real-time visual logic and rendering.
 
----
+### 📖 Introduction & Philosophy
 
-## 🌟 Introduction & Philosophy
+**Creative Node Editor (CNE)** is an experiment in Web performance. Built entirely on **Vanilla JavaScript**, **CSS**, and the **Canvas API**, CNE follows a "zero-dependency" core philosophy. By bypassing heavy frameworks, it achieves ultra-low latency and sub-millisecond feedback loops, providing a seamless "flow state" for digital artists and logic designers.
 
-**Creative Node Editor (CNE)** is more than just a tool; it's an experiment in the power of the web. Built entirely on **Vanilla JavaScript**, **CSS**, and the **Canvas API**, CNE represents a "zero-dependency" philosophy for creative tools. By bypassing heavy frameworks, CNE achieves a level of responsiveness and startup speed that traditional web apps often lack, providing a seamless "flow state" for digital artists and logic designers.
+### 🚀 Key Features
+- **Topological Evaluation Engine**: Automatically determines execution order and prevents circular dependencies using DAG logic.
+- **V2 Rendering Pipeline**: A centralized `RenderPool` that manages drawing instructions, z-indexing, and offscreen buffering.
+- **Smart Clipboard**: Clone complex node networks while maintaining their internal connection topology via ID remapping.
+- **Expression Engine**: Input raw JavaScript math (e.g., `Math.sin(time)`) directly into node parameters for procedural animation.
+- **Glassmorphism UI**: A premium, modern dark-themed interface with high responsiveness.
 
-The primary goal of CNE is to democratize high-end creative programming by providing a visual, low-code interface that doesn't compromise on technical depth. Whether you are building complex rendering pipelines or simple geometric animations, CNE provides the building blocks.
+### 🏗 Technical Infrastructure: The Role of Vite
 
----
+While CNE is a pure **Vanilla JS** project at its core, we utilize **Vite** as our development and build engine. This provides several critical advantages:
+- **Native ESM**: Loads modules directly in the browser during development for instant startup.
+- **HMR (Hot Module Replacement)**: Update node logic or styles without refreshing the page or losing your graph state.
+- **Optimized Bundling**: Uses Rollup for production builds, ensuring tree-shaking and minification for a 0KB redundant runtime.
 
-## 🚀 Key Features
-
-### 1. Advanced Modular Engine
-- **Graph-Based Logic**: Build complex systems by connecting independent functional units.
-- **Topological Evaluation**: An intelligent engine that automatically determines the correct execution order of your graph, preventing race conditions and ensuring deterministic results.
-- **Dynamic Port Rebuilding**: Nodes like `ContainerNode` and `TransformNode` dynamically react to parameter changes by adding or removing ports on the fly.
-
-### 2. High-Fidelity Rendering Pipeline (V2)
-- **RenderPool System**: A centralized hub that collects multiple rendering sources, handles z-indexing, and manages drawing priorities.
-- **Multi-Output Strategy**: Use `Screen` nodes to define specific resolutions and output windows, allowing for professional multi-monitor or partitioned displays.
-- **Real-time Feedback**: Every change in the graph is evaluated instantly, providing a sub-millisecond feedback loop on the canvas.
-
-### 3. Reactive Transformation & Math
-- **Expression-Engine**: Don't settle for static values. Input raw JavaScript expressions into transformation ports to create procedurally animated objects.
-- **Coordinate Mapping**: Built-in support for relative and global coordinate conversions, essential for complex motion graphics.
-
-### 4. Pro-Grade UX & Interface
-- **Glassmorphism Design**: A sleek, modern dark-themed UI that puts your project in the center.
-- **Integrated Minimap**: Navigate vast node topologies with ease using the interactive vision-map.
-- **Rich Contextual Interaction**: Full right-click support for both the canvas and specific nodes, providing quick access to deep functionality.
-- **Intelligent Clipboard**: Copy not just nodes, but entire snapshots of visual logic—including the internal connections that define their relationship.
-
----
-
-## 🏗 Technical Architecture
-
-CNE is designed with a strictly layered approach to ensure scalability and maintainability:
-
-### **The Core Layer**
-- **NodeCanvas**: The rendering and interaction heart. It handles high-precision object picking, multi-selection algorithms, and geometric viewport transformations.
-- **ConnectionManager**: A specialized library for managing the DAG (Directed Acyclic Graph). It handles type validation (e.g., preventing a 'Number' from outputting to a 'RenderSource') and lifecycle management.
-- **RenderEngine**: The execution heart. It runs a optimized loop that prioritizes dirty-flagged nodes to minimize CPU overhead.
-
-### **The Node Layer**
-- **Base `Node` Class**: Defines the standard interface for serialization, port management, and UI representation.
-- **Specialized Node Registry**: A factory-based system that allows for easy extension. If you want a new effect, just drop a new class into `src/nodes/`.
-
-### **The UI Layer**
-- **ParamPanel**: A context-aware property inspector. It listens to the selected node type and dynamically generates a control suite, including color pickers, sliders, and file selectors.
-- **Toolbar & Windows**: Flexbox-based panels that manage global state and view toggles.
-
----
-
-## 🛠 Tech Stack Deep Dive
-
-- **Language**: JavaScript (ES6+). Strictly modular architecture.
-- **Graphics**: HTML5 Canvas 2D API. Chosen for its balance of performance and universal compatibility across devices.
-- **Layout**: CSS Variables & Grid. Zero CSS-in-JS libraries used to maintain raw performance and CSS-cache efficiency.
-- **Build System**: Vite. Used for lightning-fast HMR (Hot Module Replacement) during the intensive design process.
-
----
-
-## 📦 Getting Started
-
-### Prerequisites
-- A modern web browser with ES6 Module support.
-- [Node.js](https://nodejs.org/) (Version 16+ recommended).
-
-### Installation & Run
-1.  **Clone the Repository**:
-    ```bash
-    git clone https://github.com/ShenyfZero9211/creative_node_editor.git
-    cd creative_node_editor
-    ```
-2.  **Initialize**:
-    ```bash
-    npm install
-    ```
-3.  **Start Development**:
-    ```bash
-    npm run dev
-    ```
-    Access the editor at `http://localhost:3000`.
-
----
-
-## ⌨️ Productivity Powerhouse: Hotkeys
-
-CNE is designed for power users. Master these to speed up your workflow:
-
+### ⌨️ Hotkeys
 | Modifier | Key | Action |
 | :--- | :--- | :--- |
-| `Ctrl` | `C` | **Smart Copy** (Remembers connections within selection) |
-| `Ctrl` | `V` | **Smart Paste** (Restores nodes and their internal links) |
-| `Ctrl` | `S` | **Save Project** (.cne export) |
-| `Ctrl` | `O` | **Open Project** (.cne import) |
+| `Ctrl` | `C` / `V` | **Smart Copy / Paste** (Preserves connections) |
+| `Ctrl` | `S` / `O` | **Save / Open Project** (.cne files) |
 | `Ctrl` | `A` | **Select All Nodes** |
-| `Delete` | `Del` | **Batch Delete** (Optimized removal) |
-| `Middle-Click` | `Drag` | **Fast Pan** (Viewport navigation) |
-| `Scroll` | `Wheel` | **Precision Zoom** (Centered on cursor) |
-| `F11` | - | **Toggle Presentation Mode** |
+| `Delete` | `Del` | **Batch Delete** |
+| `Right-Click` | `Drag` | **Fast Pan** |
+| `Scroll` | `Wheel` | **Precision Zoom** |
+| `F11` | - | **Presentation Mode** |
+
+### 📦 Installation
+1. `git clone https://github.com/ShenyfZero9211/creative_node_editor.git`
+2. `npm install`
+3. `npm run dev` (Access at `http://localhost:3000`)
 
 ---
 
-## 📄 Documentation & Research
+<a name="中文"></a>
 
-For a deep academic analysis of the system architecture, performance benchmarks, and the research significance of this work, please see the full paper:
+## 🌟 中文版本
 
-👉 **[SOFTWARE_DOC.md (10,000-word Software Thesis)](SOFTWARE_DOC.md)**
+> 基于原生 JS 构建的高性能、模块化可视化节点创意编辑系统。
+
+### 📖 简介与理念
+
+**Creative Node Editor (CNE)** 是一款探索 Web 性能极限的实验性项目。它完全基于 **原生 JavaScript (Vanilla JS)**、**CSS** 和 **Canvas API** 构建。通过绕过重型框架的开销，CNE 实现了亚毫秒级的交互反馈，为数字艺术家和逻辑设计师提供如丝般顺滑的创作体验。
+
+### 🚀 核心特性
+- **拓扑求值引擎**：基于有向无环图 (DAG) 逻辑，自动确定计算顺序并防止循环依赖。
+- **V2 渲染流水线**：通过中心化的 `RenderPool` 管理绘图指令、深度排序及离屏缓冲。
+- **智能剪贴板**：通过 ID 重映射技术，在克隆节点的同时完美保留其内部连线拓扑。
+- **动态表达式引擎**：支持在节点参数中直接输入 JS 数学公式（如 `Math.sin(time)`）实现程序化动画。
+- **玻璃拟态 UI**：极具高级感的现代深色风格界面，兼顾美学与响应速度。
+
+### 🏗 开发基础设施：Vite 的角色
+
+虽然 CNE 的核心逻辑是纯原生 JS，但我们引入了 **Vite** 作为开发驱动引擎：
+- **原生 ESM 支持**：开发阶段利用浏览器原生模块加载，实现“秒开”体验。
+- **极速热更新 (HMR)**：修改节点逻辑或样式时，无需刷新页面即可实时生效，且不丢失当前的画布状态。
+- **生产构建优化**：在发布版本中执行 Tree-shaking 和混淆压缩，确保 0KB 冗余运行时负载。
+
+### ⌨️ 快捷键指南
+| 组合键 | 按键 | 功能描述 |
+| :--- | :--- | :--- |
+| `Ctrl` | `C` / `V` | **智能复制/粘贴** (保留内部连线) |
+| `Ctrl` | `S` / `O` | **保存/打开工程** (.cne 文件) |
+| `Ctrl` | `A` | **全选节点** |
+| `Delete` | `Del` | **批量删除** |
+| `右键` | `拖拽` | **画布平移** |
+| `中键滚动` | `滚轮` | **精准缩放** (以鼠标为中心) |
+| `F11` | - | **演示模式切换** |
+
+### 📦 安装与运行
+1. `git clone https://github.com/ShenyfZero9211/creative_node_editor.git`
+2. `npm install`
+3. `npm run dev` (访问地址 `http://localhost:3000`)
 
 ---
 
-## 🗺 Roadmap
+## ⚖️ License & Attribution / 许可与署名
 
-- [ ] **GPU Acceleration**: Migrating the render core to WebGL/WebGPU.
-- [ ] **Node Grouping**: The ability to encapsulate logic into reusable sub-graphs.
-- [ ] **History Stack**: Full Undo/Redo support for all graph operations.
-- [ ] **Extension API**: A public plugin system for developers to add third-party nodes.
-
----
-
-## 🤝 Contributing & Support
-
-We welcome developers, artists, and researchers to contribute to CNE. 
-- **Bug Reports**: Open an issue on GitHub.
-- **Feature Requests**: We are always looking for new node ideas!
-- **Pull Requests**: please ensure code follows the existing modular style.
-
----
-
-## ⚖️ License & Attribution
-
-Creative Node Editor is open-source software licensed under the **MIT License**. 
-
+Licensed under the **MIT License**.
 **Copyright (c) 2026 Yifan Shen**
 
-For more information, see the [LICENSE](LICENSE) file.
+For more information, see the [SOFTWARE_DOC.md](SOFTWARE_DOC.md) or [LICENSE](LICENSE) file.
