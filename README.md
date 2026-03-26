@@ -136,7 +136,10 @@ We welcome developers, artists, and researchers to contribute to CNE.
 
 ---
 
-## ⚖️ License
+## ⚖️ License & Attribution
 
 Creative Node Editor is open-source software licensed under the **MIT License**. 
-Built with ❤️ by the CNE Development Team.
+
+**Copyright (c) 2026 Yifan Shen**
+
+For more information, see the [LICENSE](LICENSE) file.
